@@ -1,0 +1,19 @@
+{
+  "project": "Biệt thự Tam Quan",
+  "set": "La Rotonda B",
+  "eyebrow": "Biệt thự Tam Quan · phương án đã chọn",
+  "heading": "La Rotonda B",
+  "summary": "Bản ghép: loggia biển + sảnh tròn chỉ thông hai tầng – trọn bộ RB0 đến RB7, thêm RB4b là bản thứ hai của tầng 3.",
+  "source": "https://claude.ai/code/artifact/7f50b71b-e25f-4a45-9de9-66d8f274766d",
+  "boards": [
+    { "code": "RB0",  "slug": "rb0-tong-mat-bang",      "file": "RotondaBTongMatBang.dc.html", "w": 1000, "h": 1060, "title": "Tổng mặt bằng – mái không còn vòm kính, mặt biển có loggia" },
+    { "code": "RB1",  "slug": "rb1-tang-duoi",          "file": "RotondaBTangDuoi.dc.html",    "w": 1480, "h": 1060, "title": "Tầng dưới – trụ hàng vòm, hồ bơi 4,6 m (cốt −2.50)" },
+    { "code": "RB2",  "slug": "rb2-tang-1",             "file": "RotondaBTang1.dc.html",       "w": 1480, "h": 1060, "title": "Tầng 1 – như R2, mặt biển đổi thành hàng vòm (cốt +0.90)" },
+    { "code": "RB3",  "slug": "rb3-tang-2",             "file": "RotondaBTang2.dc.html",       "w": 1480, "h": 1060, "title": "Tầng 2 – phòng gia đình mở ra loggia biển (cốt +5.60)" },
+    { "code": "RB4",  "slug": "rb4-tang-3",             "file": "RotondaBTang3.dc.html",       "w": 1480, "h": 1060, "title": "Tầng 3 – sảnh tròn đóng lại thành phòng khách tròn (cốt +10.30)" },
+    { "code": "RB4b", "slug": "rb4b-tang-3-can-ho-chu", "file": "RotondaBTang3b.dc.html",      "w": 1480, "h": 1060, "title": "Tầng 3 bản thứ hai – căn hộ chủ: ngủ, tắm ông, tắm bà, đồ ông, đồ bà, quầy bar (cốt +10.30)" },
+    { "code": "RB5",  "slug": "rb5-mat-cat",            "file": "RotondaBMatCat.dc.html",      "w": 1480, "h": 1060, "title": "Mặt cắt – sảnh tròn hai tầng dưới trần vòm, loggia biển" },
+    { "code": "RB6",  "slug": "rb6-mat-dung-chinh",     "file": "RotondaBMatDung.dc.html",     "w": 1480, "h": 1060, "title": "Mặt đứng chính – không còn vòm kính" },
+    { "code": "RB7",  "slug": "rb7-mat-dung-bien",      "file": "RotondaBMatBien.dc.html",     "w": 1480, "h": 1060, "title": "Mặt đứng phía biển – loggia hai tầng" }
+  ]
+}

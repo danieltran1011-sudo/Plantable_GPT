@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Rotonda B · Biệt thự Tam Quan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="viewer">
+<header class="viewer-bar">
+<a class="back" href="index.html">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg>
+Tất cả bản vẽ
+</a>
+<div class="viewer-title">
+<span class="code" id="board-code"></span>
+<h1 class="display" id="board-title"></h1>
+</div>
+<div class="viewer-tools">
+<div class="segmented" role="group" aria-label="Thu phóng">
+<button class="btn" type="button" data-zoom="fit" aria-pressed="true">Vừa màn hình</button>
+<button class="btn" type="button" data-zoom="actual" aria-pressed="false">Cỡ thật</button>
+</div>
+<a class="btn" id="board-open" href="#" target="_blank" rel="noopener">Mở riêng</a>
+<div class="pager">
+<button class="btn" type="button" id="board-prev" aria-label="Bản trước">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>
+</button>
+<span class="pos" id="board-pos" aria-live="polite"></span>
+<button class="btn" type="button" id="board-next" aria-label="Bản sau">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
+</button>
+</div>
+</div>
+</header>
+<main class="stage" id="stage">
+<div class="board-box" id="board-box">
+<iframe id="board-frame" title=""></iframe>
+</div>
+</main>
+<noscript><p class="noscript">Trình xem cần JavaScript. Từ <a href="index.html">trang tổng</a>, mỗi bản vẽ vẫn mở được riêng trong thư mục boards/.</p></noscript>
+<script src="assets/boards.js"></script>
+<script src="assets/viewer.js"></script>
+</body>
+</html>
