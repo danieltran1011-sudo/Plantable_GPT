@@ -97,7 +97,7 @@ window.BOARD_SETS = [
       {
         "code": "DT3",
         "slug": "dt3-tang-1",
-        "title": "Tầng 1 – trục danh dự, enfilade, thang hoàng gia (cốt +0.90)",
+        "title": "Tầng 1 – trục danh dự, enfilade, La Rotonda thang cong (cốt +0.90)",
         "w": 1480,
         "h": 1060
       },
@@ -125,7 +125,7 @@ window.BOARD_SETS = [
       {
         "code": "DT7",
         "slug": "dt7-mat-cat",
-        "title": "Mặt cắt dọc trục – hồ bơi, Grand Salon, thang hoàng gia, lồng đèn",
+        "title": "Mặt cắt dọc trục – hồ bơi, Grand Salon, La Rotonda, lồng đèn",
         "w": 1480,
         "h": 1060
       },
