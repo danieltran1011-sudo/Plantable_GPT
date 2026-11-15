@@ -1,8 +1,10 @@
-// Board viewer: shows one board from window.BOARD_SET (assets/boards.js), chosen by the URL hash.
+// Board viewer: shows one board from window.BOARD_SETS (assets/boards.js), chosen by the URL hash.
+// Paging stays inside the set the board belongs to.
 (function () {
   'use strict';
 
-  var set = window.BOARD_SET;
+  var sets = window.BOARD_SETS;
+  var set = sets[0];
   var boards = set.boards;
   var $ = function (id) { return document.getElementById(id); };
   var stage = $('stage');
@@ -15,11 +17,20 @@
   var index = 0;
   var zoom = 'fit';
 
+  // Point set/boards at the set holding the board named in the hash; return its index there.
   function indexFromHash() {
     var slug = decodeURIComponent(location.hash.slice(1));
-    for (var i = 0; i < boards.length; i++) {
-      if (boards[i].slug === slug) return i;
+    for (var s = 0; s < sets.length; s++) {
+      for (var i = 0; i < sets[s].boards.length; i++) {
+        if (sets[s].boards[i].slug === slug) {
+          set = sets[s];
+          boards = set.boards;
+          return i;
+        }
+      }
     }
+    set = sets[0];
+    boards = set.boards;
     return 0;
   }
 
@@ -49,6 +60,8 @@
     $('board-title').textContent = b.title;
     $('board-title').title = b.title;
     $('board-open').href = src;
+    $('board-set').textContent = set.set;
+    $('board-back').href = 'index.html#' + set.id;
     $('board-pos').textContent = (index + 1) + ' / ' + boards.length;
     prev.disabled = index === 0;
     next.disabled = index === boards.length - 1;

@@ -1,0 +1,75 @@
+{
+  "order": 2,
+  "project": "Biệt thự Tam Quan",
+  "set": "Ý tưởng mới",
+  "eyebrow": "Đề xuất thêm · chưa có trên canvas",
+  "heading": "Bảy ý tưởng thêm cho La Rotonda B",
+  "summary": "Gió biển, âm học sảnh tròn, ban công trên porte-cochère, lối không bậc cho ông bà, nước mưa, điện mặt trời và chống ngập tầng dưới. Mỗi ý tưởng một bản; xem YT0 trước.",
+  "generator": "design/y-tuong-moi/generate.py",
+  "boards": [
+    {
+      "code": "YT0",
+      "slug": "yt0-tong-hop",
+      "file": "YT0TongHop.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Tổng hợp – bảy ý tưởng và thứ tự phải chốt"
+    },
+    {
+      "code": "YT1",
+      "slug": "yt1-gio-bien",
+      "file": "YT1GioBien.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Gió biển xuyên trục chính – ô thoáng, sảnh tròn làm ống khói"
+    },
+    {
+      "code": "YT2",
+      "slug": "yt2-am-hoc-rotonda",
+      "file": "YT2AmHoc.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Âm học cho La Rotonda – trần vòm hút âm, thảm, rèm"
+    },
+    {
+      "code": "YT3",
+      "slug": "yt3-ban-cong-porte-cochere",
+      "file": "YT3BanCong.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Ban công hoàng hôn trên mái porte-cochère (cốt +5.60)"
+    },
+    {
+      "code": "YT4",
+      "slug": "yt4-loi-khong-bac",
+      "file": "YT4KhongBac.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Một lối không bậc cho ông bà – dốc, thang máy, thang nâng sang nhà cũ"
+    },
+    {
+      "code": "YT5",
+      "slug": "yt5-nuoc-mua",
+      "file": "YT5NuocMua.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Bể nước mưa 30 m³ dưới sân danh dự"
+    },
+    {
+      "code": "YT6",
+      "slug": "yt6-dien-mat-troi",
+      "file": "YT6MatTroi.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Điện mặt trời giấu sau lan can mái cánh phải"
+    },
+    {
+      "code": "YT7",
+      "slug": "yt7-tang-duoi-kho",
+      "file": "YT7ChongNgap.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Giữ tầng dưới khô khi bão – khảo sát, ngưỡng, bơm, van"
+    }
+  ]
+}
