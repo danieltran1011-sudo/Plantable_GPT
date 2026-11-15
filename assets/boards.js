@@ -90,14 +90,14 @@ window.BOARD_SETS = [
       {
         "code": "DT2",
         "slug": "dt2-tang-duoi",
-        "title": "Tầng dưới – ninfeo có hồ bơi trong hang vòm (cốt −3.40)",
+        "title": "Tầng dưới – ninfeo có hồ bơi trong hang vòm (cốt −2.50)",
         "w": 1480,
         "h": 1060
       },
       {
         "code": "DT3",
         "slug": "dt3-tang-1",
-        "title": "Tầng 1 – trục danh dự, enfilade, thang hoàng gia (cốt ±0.00)",
+        "title": "Tầng 1 – trục danh dự, enfilade, thang hoàng gia (cốt +0.90)",
         "w": 1480,
         "h": 1060
       },
