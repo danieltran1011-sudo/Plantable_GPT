@@ -4,7 +4,7 @@
   "set": "Dinh thự Tam Quan",
   "eyebrow": "Thiết kế mới · tân cổ điển Pháp – Ý",
   "heading": "Dinh thự Tam Quan",
-  "summary": "Một dinh thự châu Âu trên trục từ cổng ra biển: nền đá rusticated, thức Corinth khổng lồ, thang hoàng gia, Grand Salon nhìn biển, hồ bơi trong hang vòm. Trọn bộ tám bản, từ ý tưởng tới mặt cắt.",
+  "summary": "Một dinh thự châu Âu trên trục từ cổng ra biển: nền đá rusticated, thức Corinth khổng lồ, thang hoàng gia, Grand Salon nhìn biển, hồ bơi trong hang vòm. Nhà cũ nối liền thành một khối. Trọn bộ chín bản, từ ý tưởng tới mối nối.",
   "generator": "design/dinh-thu/generate.py",
   "boards": [
     {
@@ -70,6 +70,14 @@
       "w": 1480,
       "h": 1060,
       "title": "Mặt cắt dọc trục – hồ bơi, Grand Salon, thang hoàng gia, lồng đèn"
+    },
+    {
+      "code": "DT8",
+      "slug": "dt8-noi-nha-cu",
+      "file": "DT8NoiNhaCu.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Nối liền với nhà cũ – khối nối, enfilade 29 m, một đường mái"
     }
   ]
 }

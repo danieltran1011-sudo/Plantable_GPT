@@ -128,6 +128,13 @@ window.BOARD_SETS = [
         "title": "Mặt cắt dọc trục – hồ bơi, Grand Salon, thang hoàng gia, lồng đèn",
         "w": 1480,
         "h": 1060
+      },
+      {
+        "code": "DT8",
+        "slug": "dt8-noi-nha-cu",
+        "title": "Nối liền với nhà cũ – khối nối, enfilade 29 m, một đường mái",
+        "w": 1480,
+        "h": 1060
       }
     ]
   }

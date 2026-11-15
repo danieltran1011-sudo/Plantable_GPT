@@ -4,9 +4,10 @@ A static site with two board sets:
 
 - **La Rotonda B** (RB0–RB7, plus RB4b), taken unchanged from the
   [design canvas](https://claude.ai/code/artifact/7f50b71b-e25f-4a45-9de9-66d8f274766d).
-- **Dinh thự Tam Quan** (DT0–DT7): a new design for the villa as an 18th-century French–Italian
+- **Dinh thự Tam Quan** (DT0–DT8): a new design for the villa as an 18th-century French–Italian
   neoclassical mansion: rusticated base, giant Corinthian order, imperial staircase under a domed lantern,
-  Grand Salon over a grotto pool. Concept, site plan, three plan boards, two elevations and a long section.
+  Grand Salon over a grotto pool. Concept, site plan, three plan boards, two elevations, a long section, and DT8 on joining
+  the old house into one building (link block, a 29 m enfilade, one roof line at +15.00).
   Not on the canvas yet.
 
 It is plain HTML and CSS with no dependencies, so any static host works, including GitHub Pages.
