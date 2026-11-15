@@ -70,48 +70,62 @@ window.BOARD_SETS = [
     ]
   },
   {
-    "id": "y-tuong-tu-dau",
-    "set": "Ý tưởng từ đầu",
+    "id": "dinh-thu",
+    "set": "Dinh thự Tam Quan",
     "boards": [
       {
-        "code": "K0",
-        "slug": "k0-khu-dat-de-bai",
-        "title": "Làm lại từ khu đất – đọc khu đất, đề bài, bốn hướng mới",
+        "code": "DT0",
+        "slug": "dt0-y-tuong",
+        "title": "Dinh thự Tam Quan – ý tưởng, phong cách, năm nguyên tắc",
         "w": 1480,
         "h": 1060
       },
       {
-        "code": "K1",
-        "slug": "k1-tuong-phia-tay",
-        "title": "Tường phía tây – dải kín dọc mặt đường, phòng lớn mở ra biển",
+        "code": "DT1",
+        "slug": "dt1-tong-mat-bang",
+        "title": "Tổng mặt bằng – hai nhà cổng, sân danh dự, vườn biển",
         "w": 1480,
         "h": 1060
       },
       {
-        "code": "K2",
-        "slug": "k2-mot-mai-bon-hien",
-        "title": "Một mái, bốn hiên – khối vuông, hiên sâu, sảnh giữa có lồng đèn",
+        "code": "DT2",
+        "slug": "dt2-tang-duoi",
+        "title": "Tầng dưới – ninfeo có hồ bơi trong hang vòm (cốt −2.50)",
         "w": 1480,
         "h": 1060
       },
       {
-        "code": "K3",
-        "slug": "k3-bac-thang-ra-bien",
-        "title": "Bậc thang ra biển – mỗi tầng lùi 5 m thành một sân thượng",
+        "code": "DT3",
+        "slug": "dt3-tang-1",
+        "title": "Tầng 1 – trục danh dự, enfilade, thang hoàng gia (cốt +0.90)",
         "w": 1480,
         "h": 1060
       },
       {
-        "code": "K4",
-        "slug": "k4-cong-nhin-ra-bien",
-        "title": "Cổng nhìn ra biển – hai khối, một cổng trên trục, cầu hai tầng",
+        "code": "DT4",
+        "slug": "dt4-tang-2-3",
+        "title": "Tầng 2 và tầng 3 – gia đình và căn hộ chủ (cốt +5.60, +10.30)",
         "w": 1480,
         "h": 1060
       },
       {
-        "code": "K5",
-        "slug": "k5-so-sanh",
-        "title": "So sánh bốn hướng và đề xuất",
+        "code": "DT5",
+        "slug": "dt5-mat-dung-chinh",
+        "title": "Mặt đứng chính – nền đá, thức Corinth khổng lồ, trán tường",
+        "w": 1480,
+        "h": 1060
+      },
+      {
+        "code": "DT6",
+        "slug": "dt6-mat-dung-bien",
+        "title": "Mặt đứng phía biển – hang vòm, thang móng ngựa, sân thượng",
+        "w": 1480,
+        "h": 1060
+      },
+      {
+        "code": "DT7",
+        "slug": "dt7-mat-cat",
+        "title": "Mặt cắt dọc trục – hồ bơi, Grand Salon, thang hoàng gia, lồng đèn",
         "w": 1480,
         "h": 1060
       }

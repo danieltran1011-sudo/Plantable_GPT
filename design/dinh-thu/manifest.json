@@ -1,0 +1,75 @@
+{
+  "order": 2,
+  "project": "Biệt thự Tam Quan",
+  "set": "Dinh thự Tam Quan",
+  "eyebrow": "Thiết kế mới · tân cổ điển Pháp – Ý",
+  "heading": "Dinh thự Tam Quan",
+  "summary": "Một dinh thự châu Âu trên trục từ cổng ra biển: nền đá rusticated, thức Corinth khổng lồ, thang hoàng gia, Grand Salon nhìn biển, hồ bơi trong hang vòm. Trọn bộ tám bản, từ ý tưởng tới mặt cắt.",
+  "generator": "design/dinh-thu/generate.py",
+  "boards": [
+    {
+      "code": "DT0",
+      "slug": "dt0-y-tuong",
+      "file": "DT0YTuong.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Dinh thự Tam Quan – ý tưởng, phong cách, năm nguyên tắc"
+    },
+    {
+      "code": "DT1",
+      "slug": "dt1-tong-mat-bang",
+      "file": "DT1TongMatBang.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Tổng mặt bằng – hai nhà cổng, sân danh dự, vườn biển"
+    },
+    {
+      "code": "DT2",
+      "slug": "dt2-tang-duoi",
+      "file": "DT2TangDuoi.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Tầng dưới – ninfeo có hồ bơi trong hang vòm (cốt −2.50)"
+    },
+    {
+      "code": "DT3",
+      "slug": "dt3-tang-1",
+      "file": "DT3Tang1.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Tầng 1 – trục danh dự, enfilade, thang hoàng gia (cốt +0.90)"
+    },
+    {
+      "code": "DT4",
+      "slug": "dt4-tang-2-3",
+      "file": "DT4Tang23.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Tầng 2 và tầng 3 – gia đình và căn hộ chủ (cốt +5.60, +10.30)"
+    },
+    {
+      "code": "DT5",
+      "slug": "dt5-mat-dung-chinh",
+      "file": "DT5MatDungChinh.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Mặt đứng chính – nền đá, thức Corinth khổng lồ, trán tường"
+    },
+    {
+      "code": "DT6",
+      "slug": "dt6-mat-dung-bien",
+      "file": "DT6MatDungBien.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Mặt đứng phía biển – hang vòm, thang móng ngựa, sân thượng"
+    },
+    {
+      "code": "DT7",
+      "slug": "dt7-mat-cat",
+      "file": "DT7MatCat.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Mặt cắt dọc trục – hồ bơi, Grand Salon, thang hoàng gia, lồng đèn"
+    }
+  ]
+}
