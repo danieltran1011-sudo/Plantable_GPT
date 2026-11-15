@@ -326,24 +326,22 @@ def roof_furniture():
 def front_facade():
     o = []
     o += roof_furniture()
-    o += rustication(X0, X1, 90, 590)
-    o += [rect(X0 - 15, Y(90), X1 - X0 + 30, 90, RUSTIC, LINE, 2), path(f'M{X0 - 15} {Y(60)} H{X1 + 15}', JOINT, 3)]
+    o += rustication(X0, X1, 0, 590)
+    o += [rect(X0 - 15, Y(30), X1 - X0 + 30, 30, RUSTIC, LINE, 2)]
     o += [rect(X0, Y(590), X1 - X0, 500, 'none', LINE, 3)]
     for cx in BAYS:
         if cx == AXIS:
-            o += window(cx, 90, 180, 400, 'arch', 18, door=True, keystone=True)
+            o += window(cx, 15, 200, 455, 'arch', 18, door=True, keystone=True)
         else:
-            o += window(cx, 170, 120, 300, 'arch', 16, panes=3, keystone=True)
+            o += window(cx, 70, 130, 400, 'arch', 16, panes=4, keystone=True)
     o += upper_body(front=True)
     # porch: four Tuscan columns carrying the balcony of the piano nobile
     o += [rect(C0 - 10, Y(560), C1 - C0 + 20, 90, TRIM, LINE, 2.5), path(f'M{C0 - 10} {Y(530)} H{C1 + 10}', JOINT, 2)]
     for cx in COLS:
-        o += column(cx, 90, 470, 50, 'tuscan')
+        o += column(cx, 15, 470, 56, 'tuscan')
     o += balustrade(C0 - 10, C1 + 10, 560, 95, 22, piers=(C0 + 12, AXIS - 140, AXIS + 140, C1 - 12))
     # perron
-    for i in range(5):
-        w = (C1 - C0) + 100 + i * 40
-        o.append(rect(AXIS - w / 2, Y(90 - i * 18), w, 18, TRIM, LINE, 1.5))
+    o.append(rect(AXIS - ((C1 - C0) + 100) / 2, Y(15), (C1 - C0) + 100, 15, TRIM, LINE, 1.5))
     # area railings in front of the side bays (light wells to the lower floor)
     for a, b in ((X0, C0 - 50), (C1 + 50, X1)):
         o.append(path(f'M{a} {Y(100)} H{b} M{a} {Y(10)} H{b} ' + ' '.join(f'M{x} {Y(10)} V{Y(100)}' for x in range(a + 10, b, 18)),
@@ -355,32 +353,33 @@ def front_facade():
 def sea_facade():
     o = []
     o += roof_furniture()
-    o += rustication(X0, X1, -250, 590)
+    o += rustication(X0, X1, -340, 590)
     o += [rect(X0, Y(590), X1 - X0, 840, 'none', LINE, 3)]
     # lower floor: three-arched grotto under the terrace
     for cx in (676, AXIS, 1143):
-        o += window(cx, -250, 200, 300, 'arch', 22, door=False, panes=3, keystone=True)
+        o += window(cx, -340, 200, 320, 'arch', 22, door=False, panes=3, keystone=True)
     for cx in BAYS:
         if not C0 < cx < C1:
-            o += window(cx, -170, 110, 150, 'rect', 12, panes=2)
+            o += window(cx, -200, 110, 140, 'rect', 12, panes=2)
     # piano nobile on the sea side is the ground floor: tall arched French doors
     for cx in BAYS:
         central = C0 < cx < C1
-        o += window(cx, 110 if central else 170, 150 if central else 120, 380 if central else 300, 'arch', 16,
+        o += window(cx, 10 if central else 70, 160 if central else 130, 470 if central else 400, 'arch', 16,
                     panes=4, keystone=True)
-    o += [rect(C0 - 30, Y(90), C1 - C0 + 60, 26, TRIM, LINE, 2)]
-    o += balustrade(C0 - 30, C1 + 30, 90, 100, 24, piers=(C0 - 8, AXIS - 120, AXIS + 120, C1 + 8))
+    o += [rect(C0 - 30, Y(0), C1 - C0 + 60, 26, TRIM, LINE, 2)]
+    o += balustrade(C0 - 30, C1 + 30, 0, 100, 24, piers=(C0 - 8, AXIS - 120, AXIS + 120, C1 + 8))
     # horseshoe stair: two flights curving down to the garden
     for sx in (-1, 1):
         xa = C0 - 30 if sx < 0 else C1 + 30
         xb = xa + sx * 360
-        o.append(path(f'M{xa} {Y(90)} Q{xa + sx * 120} {Y(90)} {xb} {Y(-250)} H{xb + sx * 60} '
-                      f'Q{xa + sx * 200} {Y(116)} {xa} {Y(116)} Z', LINE, 2.5, TRIM))
-        o.append(path(f'M{xa} {Y(190)} Q{xa + sx * 150} {Y(190)} {xb + sx * 50} {Y(-150)}', LINE, 3))
+        o.append(path(f'M{xa} {Y(0)} Q{xa + sx * 120} {Y(0)} {xb} {Y(-250)} H{xb + sx * 60} '
+                      f'Q{xa + sx * 200} {Y(26)} {xa} {Y(26)} Z', LINE, 2.5, TRIM))
+        o.append(path(f'M{xa} {Y(100)} Q{xa + sx * 150} {Y(100)} {xb + sx * 50} {Y(-150)}', LINE, 3))
         o.append(rect(xb + sx * 30 - 25, Y(-150), 50, 100, TRIM, LINE, 2))
         o += urn(xb + sx * 30, -150, 0.8)
     o += upper_body(front=False)
-    o.append(rect(670, Y(-250), 480, 8, WATER, WATER_LINE, 2))
+    o.append(rect(-1100, Y(-250), 4400, 300, '#F3F4F1'))
+    o += balustrade(C0 - 30, C1 + 30, -250, 90, 24, piers=(C0 - 8, AXIS - 120, AXIS + 120, C1 + 8))
     o.append(path('M-1100 250 H3000', GREEN_LINE, 6))
     return o
 
@@ -489,8 +488,8 @@ def imperial_stair(k, seen_from_above=False):
     o = []
     c = INK if not seen_from_above else OLD_LINE
     o += [rect(530, 1020, 760, 130, TRIM, c, 3)]
-    o += treads(810, 1150, 200, 350, 13, True, c)
-    o += treads(530, 1150, 150, 350, 13, True, c) + treads(1140, 1150, 150, 350, 13, True, c)
+    o += treads(810, 1150, 200, 350, 16, True, c)
+    o += treads(530, 1150, 150, 350, 16, True, c) + treads(1140, 1150, 150, 350, 16, True, c)
     if not seen_from_above:
         o += [arrow('M910 1480 V1180', INK, 910, 1165, -90, k, dashed=False, w=1),
               arrow('M605 1170 V1470', INK, 605, 1485, 90, k, dashed=False, w=1),
@@ -584,7 +583,7 @@ def front_drawing(w, h, marks=True):
     o = old_and_link()
     o += front_facade()
     if marks:
-        o += level_marks(1980, k, ((0, '±0.00 sân'), (90, '+0.90'), (560, '+5.60'), (1030, '+10.30'), (1500, '+15.00'),
+        o += level_marks(1980, k, ((0, '±0.00'), (560, '+5.60'), (1030, '+10.30'), (1500, '+15.00'),
                                    (1890, '+18.90 lồng đèn')))
         o += [path('M-1038 1240 V1300 M-320 1240 V1300 M-40 1240 V1300 M1860 1240 V1300', LINE, 2)]
         for n, x, z in ((1, AXIS, 1555), (2, 793, 1060), (3, 120, 1440), (4, 245, 1660), (5, 372, 1010),
@@ -628,7 +627,7 @@ def dt5():
         (4, 'Lan can con tiện', 'Che mái bằng phía sau; trụ ở mỗi trục cột, bình đá trên trụ.'),
         (5, 'Cửa sổ tầng 2', 'Cao 2,9 m, trán tam giác và trán cung xen kẽ, ban công lan can nhỏ.'),
         (6, 'Nền rusticated', 'Tầng 1 bằng đá xẻ rãnh ngang mỗi 45 cm; cửa vòm có đá khóa.'),
-        (7, 'Porch bốn cột', 'Cột Tuscan đỡ ban công phòng học tầng 2; năm bậc từ sân lên +0.90.'),
+        (7, 'Porch bốn cột', 'Cột Tuscan đỡ ban công phòng học tầng 2; chỉ một bậc từ sân, sàn tầng 1 cùng cốt ±0.00 với nhà cũ.'),
         (8, 'Lồng đèn', 'Vòm đồng trên sảnh thang, đỉnh +18.90, cùng cao độ chóp vòm nhà cũ.'),
         (9, 'Nhà cũ nối liền', 'Ốp lại cùng nền đá, góc đá so le, phào và lan can +15.00; khối nối có cửa vòm gia đình (xem DT8).'),
     ]
@@ -648,18 +647,18 @@ def dt6():
     k = SEA_VIEW[2] / w
     o = ['<g transform="translate(1820 0) scale(-1 1)">'] + old_and_link(sea=True) + ['</g>']
     o += sea_facade()
-    o += level_marks(2960, k, ((-250, '−2.50 vườn'), (90, '+0.90'), (560, '+5.60'), (1030, '+10.30'), (1500, '+15.00'),
+    o += level_marks(2960, k, ((-340, '−3.40'), (-250, '−2.50 vườn'), (0, '±0.00'), (560, '+5.60'), (1030, '+10.30'), (1500, '+15.00'),
                                (1890, '+18.90')))
-    for n, x, z in ((1, AXIS, -90), (2, 330, -60), (3, AXIS, 140), (4, 1143, 330), (5, 1260, 1000), (6, AXIS, 1555)):
+    for n, x, z in ((1, AXIS, -120), (2, 330, -60), (3, AXIS, 50), (4, 1143, 330), (5, 1260, 1000), (6, AXIS, 1555)):
         o.append(marker(n, x, Y(z), k))
     o += [label(2499, 300, 'nhà cũ', 9, k, MUTED, 400, 'middle', None)]
     draw = svg(SEA_VIEW, w, h,
-               'Mặt đứng phía biển: tầng dưới cốt −2.50 là nền đá với ba vòm mở vào hang hồ bơi; trên đó sân thượng có lan '
+               'Mặt đứng phía biển: tầng dưới cốt −3.40 là nền đá với ba vòm mở vào hang hồ bơi; trên đó sân thượng có lan '
                'can và hai vế thang móng ngựa xuống vườn; tầng 1 có cửa vòm cao của Grand Salon; tầng 2 và 3 có trụ áp '
                'Corinth khổng lồ; trán tường tam giác và lồng đèn như mặt chính; nhà cũ ở bên phải', '\n'.join(o))
     items = [
-        (1, 'Hang vòm hồ bơi', 'Đất dốc 2,5 m nên tầng dưới lộ hẳn ra: ba vòm đá mở vào ninfeo, hồ bơi chạy từ vườn vào dưới Grand Salon.'),
-        (2, 'Thang móng ngựa', 'Hai vế cong ôm lấy ba vòm, từ sân thượng +0.90 xuống vườn −2.50; trụ và bình đá ở chân thang.'),
+        (1, 'Hang vòm hồ bơi', 'Tầng dưới ở −3.40, thấp hơn vườn 0,9 m: ba vòm đá mở ra một sân trũng có lan can, hồ bơi chạy từ sân trũng vào dưới Grand Salon.'),
+        (2, 'Thang móng ngựa', 'Hai vế cong ôm lấy sân trũng, từ sân thượng ±0.00 xuống vườn −2.50; trụ và bình đá ở chân thang.'),
         (3, 'Sân thượng', 'Rộng 8 m, sâu 3 m, lan can con tiện; nối Grand Salon với vườn.'),
         (4, 'Cửa vòm Grand Salon', 'Ba cửa vòm cao 3,8 m mở ra sân thượng; hai bên là thư viện và phòng ăn.'),
         (5, 'Trụ áp thay cột', 'Mặt sau dùng trụ áp phẳng cùng thức Corinth: phẳng hơn mặt chính, đúng thứ bậc cổ điển.'),
@@ -683,78 +682,76 @@ SECT_VIEW = (-500, -2000, 3500, 2480)
 def dt7():
     w, h = 1066, 755
     k = SECT_VIEW[2] / w
-    o = [rect(-500, 250, 3500, 240, EARTH), rect(2460, 0, 540, 250, EARTH), rect(2000, 90, 460, 160, EARTH),
-         path('M-500 250 H0', GREEN_LINE, 8), path('M2400 0 H3000', LINE, 5),
-         rect(-410, Y(-150), 20, 100, TRIM, LINE, 2)]
-    # interiors: lower floor runs out to the arcade at s 0, upper floors stop at the sea wall s 300
-    o += [rect(0, Y(90), 2000, 340, '#FFFFFF'), rect(300, Y(1500), 1700, 1410, '#FFFFFF')]
-    o += [rect(-300, 260, 1150, 140, WATER, WATER_LINE, 3)]
-    # balustrade along the side facade, seen beyond the cut
+    o = [rect(-500, Y(-250), 200, 240, EARTH), rect(-300, Y(-340), 300, 150, EARTH), rect(0, Y(-340), 2000, 150, EARTH),
+         rect(2000, Y(0), 1000, 490, EARTH), path(f'M-500 {Y(-250)} H-320', GREEN_LINE, 8), path(f'M2250 {Y(0)} H3000', LINE, 5),
+         rect(-410, Y(-150), 20, 100, TRIM, LINE, 2), rect(-320, Y(-250), 20, 90, INK)]
+    o += balustrade(-320, -110, -250, 80, 22)
+    o += [rect(0, Y(0), 2000, 340, '#FFFFFF'), rect(300, Y(1500), 1700, 1500, '#FFFFFF')]
+    o += [rect(-300, Y(-350), 1150, 120, WATER, WATER_LINE, 3)]
     o += balustrade(300, 2000, 1500, 100, 24, piers=(322, 650, 1000, 1600, 1978))
-    for s1, s2, z in ((850, 2000, -250), (0, 2000, 90), (300, 1000, 560), (1600, 2000, 560), (300, 1000, 1030),
-                      (1600, 2000, 1030), (300, 1180, 1500), (1420, 2000, 1500), (2000, 2250, 90), (2000, 2250, 560)):
+    for s1, s2, z in ((850, 2000, -340), (0, 2000, 0), (300, 1000, 560), (1600, 2000, 560), (300, 1000, 1030),
+                      (1600, 2000, 1030), (300, 1180, 1500), (1420, 2000, 1500), (2000, 2250, 15), (2000, 2250, 560)):
         o.append(rect(s1, Y(z), s2 - s1, 30, INK))
     for sw in (300, 1960):
         o += [rect(sw, Y(660), 40, 180, INK), rect(sw, Y(1090), 40, 140, INK), rect(sw, Y(1500), 40, 220, INK)]
         o += [rect(sw - 30, Y(1500), 100, 120, TRIM, LINE, 2), rect(sw - 50, Y(1505), 140, 30, TRIM, LINE, 2)]
     o += [rect(1000, Y(560), 30, 110, INK), rect(1600, Y(560), 30, 110, INK), rect(1000, Y(1030), 30, 110, INK),
           rect(1600, Y(1030), 30, 110, INK), rect(1000, Y(1500), 30, 140, INK), rect(1600, Y(1500), 30, 140, INK),
-          rect(1000, Y(90), 30, 340, INK), rect(1600, Y(90), 30, 340, INK), rect(1000, Y(-40), 30, 210, '#FFFFFF'),
-          rect(1600, Y(-40), 30, 210, '#FFFFFF'), rect(0, Y(90), 40, 30, INK)]
-    o += [rect(-10, Y(190), 20, 100, TRIM, LINE, 2), path(f'M-10 {Y(190)} H300', LINE, 4)]
+          rect(1000, Y(0), 30, 340, INK), rect(1600, Y(0), 30, 340, INK), rect(1000, Y(-120), 30, 220, '#FFFFFF'),
+          rect(1600, Y(-120), 30, 220, '#FFFFFF'), rect(0, Y(0), 40, 40, INK)]
+    o += [rect(-10, Y(100), 20, 100, TRIM, LINE, 2), path(f'M-10 {Y(100)} H300', LINE, 4)]
     # ninfeo: columns and shallow vaults seen beyond
-    o += [rect(235, Y(60), 30, 310, TRIM, LINE, 2), rect(585, Y(60), 30, 310, TRIM, LINE, 2),
-          path(f'M40 {Y(40)} Q137 {Y(85)} 235 {Y(40)} M265 {Y(40)} Q425 {Y(85)} 585 {Y(40)} M615 {Y(40)} Q800 {Y(85)} 985 {Y(40)}', LINE, 3)]
+    o += [rect(235, Y(-40), 30, 300, TRIM, LINE, 2), rect(585, Y(-40), 30, 300, TRIM, LINE, 2),
+          path(f'M40 {Y(-40)} Q137 {Y(-5)} 235 {Y(-40)} M265 {Y(-40)} Q425 {Y(-5)} 585 {Y(-40)} M615 {Y(-40)} Q800 {Y(-5)} 985 {Y(-40)}', LINE, 3)]
     # Grand Salon: coffered ceiling, cove, chandelier
     o += [rect(340, Y(530), 660, 22, TRIM, LINE, 2)]
     o += [rect(x, Y(508), 70, 18, '#E9E1CE', LINE, 1.5) for x in range(380, 960, 100)]
     o += [path(f'M340 {Y(450)} Q380 {Y(450)} 380 {Y(508)} M1000 {Y(450)} Q960 {Y(450)} 960 {Y(508)}', LINE, 3),
-          path(f'M650 {Y(508)} V{Y(440)}', LINE, 2), ellipse(650, Y(420), 60, 22, '#E9C46A', LINE, 2)]
-    # vestibule columns seen beyond
-    o += [rect(1690, Y(530), 40, 440, TRIM, LINE, 2), rect(1880, Y(530), 40, 440, TRIM, LINE, 2)]
-    # imperial stair: central flight up toward the sea, return flights behind, gallery rail at tầng 2
-    o += [path(f'M1500 {Y(90)} L1150 {Y(325)} H1020 V{Y(295)} H1140 L1490 {Y(60)} Z', LINE, 3, TRIM)]
-    o += [path(' '.join(f'M{1500 - i * 27:.0f} {-90 - i * 18:.0f} v-18 h-27' for i in range(13)), LINE, 2)]
-    o += [path(f'M1150 {Y(325)} L1500 {Y(560)}', OLD_LINE, 6, extra=' stroke-dasharray="14 10"'),
+          path(f'M650 {Y(508)} V{Y(420)}', LINE, 2), ellipse(650, Y(400), 60, 22, '#E9C46A', LINE, 2)]
+    o += [rect(1690, Y(530), 40, 530, TRIM, LINE, 2), rect(1880, Y(530), 40, 530, TRIM, LINE, 2)]
+    # imperial stair: central flight of 16 up toward the sea, two return flights of 15 behind
+    o += [path(f'M1550 {Y(0)} L1150 {Y(280)} H1020 V{Y(250)} H1140 L1540 {Y(-30)} Z', LINE, 3, TRIM)]
+    o += [path(' '.join(f'M{1550 - i * 25:.0f} {-i * 17.5:.1f} v-17.5 h-25' for i in range(16)), LINE, 2)]
+    o += [path(f'M1150 {Y(280)} L1555 {Y(560)}', OLD_LINE, 6, extra=' stroke-dasharray="14 10"'),
           path(f'M1030 {Y(650)} H1600 M1030 {Y(1120)} H1600', OLD_LINE, 4),
           path(' '.join(f'M{x} {Y(560)} V{Y(650)} M{x} {Y(1030)} V{Y(1120)}' for x in range(1060, 1600, 60)), OLD_LINE, 2)]
-    # lantern and its chandelier
     o += [rect(1180, Y(1700), 240, 200, WALL, LINE, 3), path(f'M1170 {Y(1700)} A130 120 0 0 1 1430 {Y(1700)}', LINE, 4, COPPER),
           path(f'M1300 {Y(1820)} V{Y(1880)}', LINE, 5), path(f'M1300 {Y(1500)} V{Y(980)}', LINE, 2),
           ellipse(1300, Y(950), 90, 34, '#E9C46A', LINE, 2)]
     o += [path(f'M{x} {Y(1560)} L{x2} {Y(300)}', '#E9C46A', 6, extra=' stroke-dasharray="8 16" opacity="0.8"')
           for x, x2 in ((1230, 1120), (1370, 1480))]
     o += [arrow(f'M1440 {Y(450)} V{Y(1600)}', TEAL, 1440, Y(1640), -90, k, dashed=False, w=1.4)]
-    # porch and perron
-    o += [rect(2210, Y(470), 26, 380, TRIM, LINE, 2), rect(2195, Y(495), 56, 25, TRIM, LINE, 2)]
+    # porch: one step from the court
+    o += [rect(2210, Y(470), 26, 455, TRIM, LINE, 2), rect(2195, Y(495), 56, 25, TRIM, LINE, 2)]
     o += balustrade(2000, 2250, 590, 90, 22)
-    o += [path(' '.join(f'M{2250 + i * 30} {-90 + i * 18} h30 v18' for i in range(5)), LINE, 3)]
+    o += [path(f'M2250 {Y(15)} h30 v15', LINE, 3)]
     L = lambda x, z, t, px=9, c=INK, wgt=600: label(x, Y(z), t, px, k, c, wgt, 'middle', '#FFFFFF')
-    o += [L(650, 300, 'GRAND SALON'), L(650, 250, 'cao 4,4 m · trần ô cờ', 8, MUTED, 400),
+    o += [L(650, 300, 'GRAND SALON'), L(650, 250, 'cao 5,3 m · trần ô cờ', 8, MUTED, 400),
           L(1300, 780, 'SẢNH THANG HOÀNG GIA'), L(1300, 730, 'thông ba tầng tới lồng đèn', 8, MUTED, 400),
           L(1800, 300, 'TIỀN SẢNH'), L(2125, 300, 'PORCH', 8),
           L(650, 780, 'PHÒNG GIA ĐÌNH'), L(1800, 780, 'PHÒNG HỌC'), L(650, 1250, 'PHÒNG NGỦ CHỦ'),
-          L(1800, 1250, 'KHÁCH RIÊNG'), L(420, -110, 'NINFEO · HỒ BƠI', 9), L(1300, -110, 'HẦM RƯỢU'),
-          L(1800, -110, 'CHIẾU PHIM', 8), L(-250, -170, 'VƯỜN −2.50', 8, GREEN_LINE), L(150, 140, 'SÂN THƯỢNG', 8),
-          L(2700, 40, 'SÂN DANH DỰ ±0.00', 8, MUTED, 400), L(1300, 1960, 'LỒNG ĐÈN', 8, ACC),
+          L(1800, 1250, 'KHÁCH RIÊNG'), L(420, -190, 'NINFEO · HỒ BƠI', 9), L(1300, -190, 'HẦM RƯỢU'),
+          L(1800, -190, 'CHIẾU PHIM', 8), L(-420, -210, 'VƯỜN −2.50', 8, GREEN_LINE), L(-160, -300, 'sân trũng', 7, TEAL),
+          L(150, 50, 'SÂN THƯỢNG', 8), L(2450, 40, 'SÂN DANH DỰ', 8, MUTED, 400), L(1300, 1960, 'LỒNG ĐÈN', 8, ACC),
           label(-450, 455, '← BIỂN', 10, k, ACC, 600, 'start', EARTH), label(2950, 455, 'ĐƯỜNG →', 10, k, ACC, 600, 'end', EARTH)]
-    o += level_marks(2760, k, ((-250, '−2.50'), (90, '+0.90'), (560, '+5.60'), (1030, '+10.30'), (1500, '+15.00'), (1890, '+18.90')))
+    o += level_marks(2760, k, ((-340, '−3.40'), (-250, '−2.50'), (0, '±0.00'), (560, '+5.60'), (1030, '+10.30'),
+                               (1500, '+15.00'), (1890, '+18.90')))
     draw = svg(SECT_VIEW, w, h,
-               'Mặt cắt dọc trục chính: từ vườn biển qua hồ bơi chạy vào hang dưới Grand Salon; Grand Salon cao 4,4 m '
+               'Mặt cắt dọc trục chính: từ vườn biển xuống sân trũng, hồ bơi chạy vào hang dưới Grand Salon; Grand Salon ở cốt ±0.00 cao 5,3 m '
                'trần ô cờ có đèn chùm; sảnh thang hoàng gia với vế giữa đi lên về phía biển rồi tách hai vế quay lại, '
                'thông ba tầng tới lồng đèn mái vòm ở cốt +18.90; tiền sảnh có cột, porch và bậc xuống sân danh dự',
                '\n'.join(o))
     items = [
         ('Hồ bơi đi vào nhà', 'dài 11,5 m',
-         'Hồ bơi bắt đầu ngoài vườn, chui qua vòm đá vào ninfeo dưới Grand Salon. Bơi từ trong hang ra ánh sáng phía biển.'),
-        ('Grand Salon', '+0.90 · cao 4,4 m',
+         'Hồ bơi bắt đầu trong sân trũng −3.40 giữa hai vế thang, chui qua vòm đá vào ninfeo dưới Grand Salon.'),
+        ('Grand Salon', '±0.00 · cao 5,3 m',
          'Trần ô cờ thạch cao, phào cổ ngỗng, đèn chùm; ba cửa vòm cao ra sân thượng.'),
-        ('Thang hoàng gia', '26 bậc · cao 4,7 m',
-         'Vế giữa rộng 2 m đi lên về phía biển tới chiếu nghỉ, tách hai vế rộng 1,5 m quay lại tầng 2. Khách bước lên luôn thấy ánh sáng phía biển.'),
+        ('Thang hoàng gia', '31 bậc · cao 5,6 m',
+         'Vế giữa 16 bậc rộng 2 m đi lên về phía biển tới chiếu nghỉ, tách hai vế rộng 1,5 m quay lại tầng 2. Khách bước lên luôn thấy ánh sáng phía biển.'),
         ('Lồng đèn', 'đỉnh +18.90',
          'Sảnh thang thông ba tầng tới vòm. Sáng trời rơi thẳng xuống thang; ô thoáng ở thân lồng đèn mở ra cho hơi nóng thoát.'),
-        ('Tầng 3 yên tĩnh', 'không thông xuống salon',
-         'Chỉ sảnh thang thông tầng; phòng ngủ chủ có sàn kín, cách tiếng tiệc ở tầng 1.'),
+        ('Tầng dưới −3.40', 'chống thấm toàn khối',
+         'Thấp hơn vườn 0,9 m và gần biển: tường, sàn chống thấm kiểu bể, sân trũng có rãnh thu, hố bơm hai bơm. Cần số liệu nước ngầm.'),
     ]
     right = side_title('Một chuỗi không gian') + '\n' + '\n'.join(row(*r) for r in items)
     left = caption('MẶT CẮT DỌC TRỤC CHÍNH · BIỂN BÊN TRÁI, ĐƯỜNG BÊN PHẢI') + '\n' + draw
@@ -814,14 +811,14 @@ def dt3():
     o += treads(1700, 1760, 140, 220, 8)
     # porch, perron, gallery to the old house
     o += [rect(C0, Y1, C1 - C0, 250, TERR, INK, 6)] + [circle(cx, 2220, 25, INK) for cx in COLS]
-    o += [rect(C0 - 50 - i * 20, 2250 + i * 30, C1 - C0 + 100 + i * 40, 30, '#FFFFFF', INK, 2) for i in range(5)]
+    o += [rect(C0 - 50, 2250, C1 - C0 + 100, 30, '#FFFFFF', INK, 2)]
     o += link_plan(k, 1)
     o += [rect(X0, Y1, C0 - 60 - X0, 150, '#FFFFFF', IRON, 3, ' stroke-dasharray="10 8"'),
           rect(C1 + 60, Y1, X1 - C1 - 60, 150, '#FFFFFF', IRON, 3, ' stroke-dasharray="10 8"')]
     o += [label(AXIS, 1300, 'SẢNH THANG', 10, k, INK, 600, 'middle', '#FFFFFF'), label(AXIS, 1340, 'HOÀNG GIA · 48 m²', 8, k, MUTED, 400, 'middle', '#FFFFFF'),
           label(AXIS, 1780, 'TIỀN SẢNH', 10, k, INK, 600, 'middle', '#F4F1EA'), label(AXIS, 1815, 'bốn cột · 32 m²', 8, k, MUTED, 400, 'middle', '#F4F1EA'),
           label(235, 1490 + 0, '', 8, k), label(140, 1620, 'SẢNH PHỤ', 8, k, INK, 600, 'middle', '#FFFFFF'),
-          label(AXIS, 160, 'SÂN THƯỢNG +0.90', 9, k, INK, 600, 'middle', TERR), label(AXIS, -150, 'HỒ BƠI', 9, k, INK, 600, 'middle', WATER),
+          label(AXIS, 160, 'SÂN THƯỢNG ±0.00', 9, k, INK, 600, 'middle', TERR), label(AXIS, -150, 'HỒ BƠI', 9, k, INK, 600, 'middle', WATER),
           label(AXIS, 2140, 'PORCH', 9, k, INK, 600, 'middle', TERR), label(AXIS, 2470, 'SÂN DANH DỰ ±0.00', 9, k, MUTED, 400, 'middle', PAVE),
           label(200, -360, 'thang móng ngựa', 8, k, INK, 600, 'middle', GREEN), label(1620, -360, 'xuống vườn −2.50', 8, k, INK, 600, 'middle', GREEN),
           label(250, 2080, 'hào sáng', 8, k, IRON, 400, 'middle', '#FFFFFF'), label(1590, 2080, 'hào sáng', 8, k, IRON, 400, 'middle', '#FFFFFF'),
@@ -838,18 +835,18 @@ def dt3():
          'Porch bốn cột, tiền sảnh bàn cờ, sảnh thang, Grand Salon, sân thượng: năm không gian nối thẳng, mỗi cái mở rộng hơn cái trước.'),
         ('Enfilade', '29 m qua hai nhà',
          'Phòng ăn, Grand Salon, thư viện, rồi qua khối nối vào sảnh thang nhà cũ: một đường cửa thẳng hàng dọc mặt biển.'),
-        ('Grand Salon', '56 m² · cao 4,4 m',
+        ('Grand Salon', '56 m² · cao 5,3 m',
          'Ba cửa vòm ra sân thượng 24 m², thang móng ngựa xuống vườn. Đây là phòng tiếp khách chính, nhìn biển.'),
         ('Phục vụ', 'tách khỏi khách',
          'Bếp Âu và soạn ở cánh nam, có thang phục vụ riêng xuống bếp Á và nhập hàng ở tầng dưới. Người phục vụ không đi qua trục.'),
         ('Nhà cũ', 'nối liền qua khối nối',
-         'Enfilade đi tiếp qua khối nối vào sảnh thang nhà cũ: năm bậc giải chênh 0,9 m và thang nâng. Chi tiết ở DT8.'),
+         'Sàn tầng 1 cùng cốt ±0.00 với nhà cũ: enfilade đi phẳng qua khối nối vào sảnh thang nhà cũ, không một bậc. Chi tiết ở DT8.'),
         ('Diện tích', '323 m² + porch, sân thượng',
          'Khối nhà 19 × 17 m; porch 20 m², sân thượng 24 m².'),
     ]
     right = side_title('Tầng tiếp khách') + '\n' + '\n'.join(row(*r) for r in rows)
-    left = caption('TẦNG 1 · CỐT +0.90 · BIỂN Ở TRÊN') + '\n' + draw
-    return header('DT3', 'Tầng 1 · tiếp khách', 'Cốt +0.90 · trục danh dự, enfilade, thang hoàng gia') + '\n' + two_col(left, right, 798)
+    left = caption('TẦNG 1 · CỐT ±0.00, BẰNG NHÀ CŨ · BIỂN Ở TRÊN') + '\n' + draw
+    return header('DT3', 'Tầng 1 · tiếp khách', 'Cốt ±0.00 · trục danh dự, enfilade, thang hoàng gia') + '\n' + two_col(left, right, 798)
 
 
 def balustrade_plan(x1, x2, y):
@@ -863,6 +860,7 @@ def dt2():
     o = [rect(-420, -480, 2660, 3000, '#F3F4F1'), rect(-420, -480, 2660, 480, GREEN), rect(-420, 2150, 2660, 370, EARTH)]
     o += horseshoe(k)
     o += room(C0, 0, C1 - C0, 1000, '', k, '#EEF3F1', area=False)
+    o += [rect(C0 + 50, -300, C1 - C0 - 100, 300, '#D9E2DE', INK, 6)] + treads(560, -300, 125, 120, 5) + treads(1135, -300, 125, 120, 5)
     o += [rect(685, -300, 450, 1150, WATER, WATER_LINE, 4)]
     o += room(C0, 1000, C1 - C0, 600, 'HẦM RƯỢU', k, sub='phòng nếm · 48 m²')
     o += room(C0, 1600, C1 - C0, 400, 'PHÒNG CHIẾU PHIM', k, px=8, sub='32 m²')
@@ -894,7 +892,7 @@ def dt2():
     o += [label(AXIS, 160, 'NINFEO', 11, k, INK, 600, 'middle', '#EEF3F1'),
           label(AXIS, 200, 'hồ bơi trong hang vòm', 8, k, MUTED, 400, 'middle', '#EEF3F1'),
           label(AXIS, 700, 'HỒ BƠI 4,5 × 11,5 m', 9, k, INK, 600, 'middle', WATER),
-          label(AXIS, -200, 'ba vòm đá', 8, k, INK, 600, 'middle', WATER),
+          label(AXIS, -200, 'sân trũng −3.40', 8, k, INK, 600, 'middle', WATER),
           label(140, 1620, 'THANG · TM', 8, k, INK, 600, 'middle', '#FFFFFF'),
           label(1580, 1600, 'THANG PHỤC VỤ', 8, k, INK, 600, 'middle', '#FFFFFF'),
           label(1580, 1640, 'nhập hàng', 7, k, MUTED, 400, 'middle', '#FFFFFF'),
@@ -904,21 +902,22 @@ def dt2():
           path(f'M{AXIS} -460 V2500', ACC, 3, extra=' stroke-dasharray="40 24" opacity="0.7"')]
     o += flush_late() + compass(k, 2120, -400) + scalebar(k, -380, 2440)
     draw = svg(FLOOR_VIEW, 798, 900,
-               'Mặt bằng tầng dưới cốt −2.50: ở giữa là ninfeo, một phòng hang có hồ bơi 4,5 × 11,5 m chạy từ vườn qua ba '
+               'Mặt bằng tầng dưới cốt −3.40: ở giữa là ninfeo, một phòng hang có hồ bơi 4,5 × 11,5 m chạy từ vườn qua ba '
                'vòm đá vào trong nhà; sau đó là hầm rượu và phòng chiếu phim; bên bắc là phòng tập, spa, thang và thang '
                'máy; bên nam là bếp Á, giặt ủi, thang phục vụ và nhập hàng qua hào sáng', '\n'.join(o))
     rows = [
         ('Ninfeo', 'hang có hồ bơi',
-         'Kiểu hang nước trong vườn villa Ý: vòm đá, tường rusticated, hồ bơi chạy từ vườn qua ba vòm vào trong. Bốn cột đỡ sàn Grand Salon phía trên.'),
+         'Kiểu hang nước trong vườn villa Ý: ba vòm đá mở ra sân trũng −3.40 giữa hai vế thang móng ngựa, năm bậc lên vườn −2.50. Bốn cột đỡ sàn Grand Salon.'),
         ('Hầm rượu', '48 m²', 'Ngay dưới sảnh thang, không cửa sổ, nhiệt độ ổn định; giá rượu và bàn nếm.'),
         ('Giải trí', 'chiếu phim, tập, spa', 'Phòng chiếu 32 m² dưới tiền sảnh; phòng tập nhìn vườn; spa và xông hơi cạnh hồ.'),
         ('Bếp Á, phục vụ', 'cánh nam', 'Bếp Á 44 m² mở ra vườn để thoát mùi; giặt ủi, kho; thang phục vụ lên bếp Âu.'),
-        ('Nhập hàng', 'qua hào sáng', 'Bậc từ sân danh dự xuống hào sáng phía nam, vào thẳng thang phục vụ; không qua cửa chính.'),
+        ('Nhập hàng', 'qua hào sáng', 'Bậc từ sân danh dự xuống hào sáng phía nam sâu 3,4 m, vào thẳng thang phục vụ; không qua cửa chính.'),
+        ('Chống thấm', 'thấp hơn vườn 0,9 m', 'Cả tầng chống thấm kiểu bể, rãnh thu ở sân trũng, hố bơm hai bơm. Phải có số liệu mực nước ngầm trước khi chốt.'),
         ('Hai phòng nhân viên', 'ở nhà cổng nam', 'Tầng dưới dành cho gia đình và phục vụ; nhân viên ở nhà cổng phía nam (xem DT1).'),
     ]
     right = side_title('Tầng vườn') + '\n' + '\n'.join(row(*r) for r in rows)
-    left = caption('TẦNG DƯỚI · CỐT −2.50 · MỞ RA VƯỜN BIỂN') + '\n' + draw
-    return header('DT2', 'Tầng dưới · ninfeo', 'Cốt −2.50 · hồ bơi trong hang vòm, hầm rượu, giải trí') + '\n' + two_col(left, right, 798)
+    left = caption('TẦNG DƯỚI · CỐT −3.40 · MỞ RA SÂN TRŨNG') + '\n' + draw
+    return header('DT2', 'Tầng dưới · ninfeo', 'Cốt −3.40 · hồ bơi trong hang vòm, hầm rượu, giải trí') + '\n' + two_col(left, right, 798)
 
 
 # ---------- DT4 · Tầng 2 và tầng 3 ----------
@@ -1019,7 +1018,7 @@ def dt1():
           circle(AXIS, 1300, 130, COPPER, INK, 6), circle(AXIS, 1300, 40, TRIM, INK, 4),
           rect(115, 1050, 70, 120, WALL, INK, 4), rect(1635, 1050, 70, 120, WALL, INK, 4),
           path(f'M{C0 - 40} {Y0} L{AXIS} {Y0 + 110} L{C1 + 40} {Y0} M{C0 - 40} {Y1} L{AXIS} {Y1 - 110} L{C1 + 40} {Y1}', INK, 6)]
-    o += [rect(C0, Y1, C1 - C0, 250, TERR, INK, 6)] + [rect(C0 - 50 - i * 20, 2250 + i * 30, C1 - C0 + 100 + i * 40, 30, '#FFFFFF', INK, 2) for i in range(5)]
+    o += [rect(C0, Y1, C1 - C0, 250, TERR, INK, 6)] + [rect(C0 - 50, 2250, C1 - C0 + 100, 30, '#FFFFFF', INK, 2)]
     o += [rect(LX0, LY0, LX1 - LX0, LY1 - LY0, '#D9DDE0', INK, 12), rect(LX0 + 30, LY0 + 30, LX1 - LX0 - 60, LY1 - LY0 - 60, 'none', TRIM, 14)]
     # court, gate, pavilions, drive
     o += [rect(-190, 2400, 2200, 600, PAVE), path(f'M-190 {2400} H2010', INK, 3)]
@@ -1088,7 +1087,7 @@ def dt0():
             "<div style=\"font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 64px; line-height: 1\">Một dinh thự trên trục ra biển</div>"
             '<div style="font-size: 16px; line-height: 1.55; color: #4A5868; max-width: 880px">Thiết kế lại từ đầu theo lối dinh thự '
             'châu Âu thế kỷ 18: đối xứng tuyệt đối, thức cột khổng lồ, chuỗi phòng nối thẳng trục, và một lồng đèn mái vòm '
-            'nói cùng ngôn ngữ với tháp vòm nhà cũ. Nhà cũ được nối liền và ốp lại để hai nhà thành một dinh thự. Giữ đề bài của bộ CHỐT, cùng cao độ các tầng.</div></div>\n'
+            'nói cùng ngôn ngữ với tháp vòm nhà cũ. Nhà cũ được nối liền, ốp lại, và hai nhà cùng cốt nền ±0.00 để thành một dinh thự. Giữ đề bài của bộ CHỐT, cùng cao độ các tầng.</div></div>\n'
             + caption('MẶT ĐỨNG CHÍNH') + '\n' + hero + '\n' + caption('CHUỖI KHÔNG GIAN TRÊN TRỤC') + '\n' + seq_html)
     right = (side_title('Năm nguyên tắc') + '\n' + '\n'.join(row(*r) for r in principles) + '\n'
              + caption('VẬT LIỆU') + '\n' + sw)
@@ -1159,15 +1158,13 @@ def link_plan(k, level, show_old=True):
                       1730 if level == 1 else 1130, OLD))
     o.append(rect(LX0, LY0, LX1 - LX0, LY1 - LY0, '#FFFFFF', INK, 18))
     if level == 1:
-        o += treads(-190, 590, 150, 140, 5, vertical=False)
-        o += [rect(-190, 800, 140, 140, '#FFFFFF', INK, 3), path('M-190 800 L-50 940 M-50 800 L-190 940', INK, 1.5)]
         for g in ((LX1 - 25, 590, 30, 140), (LX0 - 30, 645, 30, 75), (LX0 - 30, 770, 30, 120),
                   (-250, LY0 - 20, 140, 30), (-250, LY1 - 12, 140, 30)):
             o.append(gap(*g))
         o += [label(-180, 450, 'KHỐI NỐI', 8, k, INK, 600, 'middle', '#FFFFFF'),
               label(-180, 490, '±0.00', 7, k, MUTED, 400, 'middle', '#FFFFFF'),
-              label(-115, 760, '5 bậc', 7, k, INK, 600, 'middle', '#FFFFFF'),
-              label(-120, 985, 'thang nâng', 6.5, k, MUTED, 400, 'middle', '#FFFFFF')]
+              label(-180, 860, 'cùng cốt', 7, k, ACC, 600, 'middle', '#FFFFFF'),
+              label(-180, 895, 'không bậc', 7, k, ACC, 600, 'middle', '#FFFFFF')]
     else:
         o += treads(-300, 1100, 240, 120, 4, vertical=True)
         for g in ((LX1 - 25, 1160, 30, 80), (LX0 - 30, 500, 30, 120), (LX0 - 30, 900, 30, 120)):
@@ -1187,7 +1184,7 @@ def dt8():
           path('M-1016 730 H-744 M-696 730 H-342', OLD_LINE, 3, extra=' stroke-dasharray="10 8"'),
           path('M-700 196 H-535 A190 190 0 0 1 -535 576 M-700 291 H-535 A95 95 0 0 1 -535 481 M-700 196 V291 M-535 481 V576',
                '#6F5A3A', 3)]
-    o += room(X0, Y0, C0 - X0, 850, 'THƯ VIỆN', k, sub='+0.90 · 47 m²')
+    o += room(X0, Y0, C0 - X0, 850, 'THƯ VIỆN', k, sub='±0.00 · 47 m²')
     o += room(X0, 1150, C0 - X0, 350, 'POWDER', k, px=8)
     o += room(X0, 1500, C0 - X0, 500, 'SẢNH PHỤ', k, px=8, sub='thang · TM')
     o += room(C0, Y0, 900, 700, '', k, area=False) + room(C0, 1000, 900, 600, '', k, area=False)
@@ -1212,7 +1209,7 @@ def dt8():
     o += compass(k, 520, -650)
     plan = svg(pv, 537, 880,
                'Mặt bằng mối nối tầng 1: nhà cũ bên trái với salon biển, sảnh thang và phòng khách gia đình; khối nối 2,8 m '
-               'ở giữa, cốt ±0.00, có năm bậc lên thư viện nhà mới và thang nâng; cửa ra vườn biển và cửa vào từ sân nhà '
+               'ở giữa, cùng cốt ±0.00 với cả hai nhà, không bậc; cửa ra vườn biển và cửa vào từ sân nhà '
                'cũ ở hai đầu; một đường enfilade 29 m chạy từ nhà cũ qua khối nối, thư viện, Grand Salon', '\n'.join(o))
     # front elevation of the junction
     ev = (-1100, -1950, 1800, 2050)
@@ -1223,36 +1220,35 @@ def dt8():
     elev = svg(ev, 395, 450, 'Mặt đứng mối nối: nhà cũ ốp lại cùng nền đá, góc đá so le, khung cửa có trán, entablature '
                'và lan can như nhà mới, vòm tháp lợp đồng; khối nối lùi vào với cửa vòm gia đình; nhà mới bên phải', '\n'.join(e))
     # cross section through the link (north left)
-    sv = (-1100, -1950, 1800, 2250)
+    sv = (-1100, -1950, 1800, 2400)
     ks = sv[2] / 360
-    s = [rect(-1100, Y(0), 1060, 300, EARTH), rect(-40, Y(-250), 740, 50, EARTH),
+    s = [rect(-1100, Y(0), 1060, 450, EARTH), rect(-40, Y(-340), 740, 110, EARTH),
          rect(-1038, Y(1500), 718, 1500, OLD), rect(LX0, Y(1500), 280, 1500, '#FFFFFF'), rect(-40, Y(1500), 740, 1750, '#FFFFFF')]
     s += [rect(-1038, Y(1500), 22, 1500, OLD_LINE), rect(-342, Y(1500), 22, 1500, OLD_LINE), gap(-342, Y(240), 22, 240),
           rect(-1038, Y(0), 718, 25, OLD_LINE), rect(-1038, Y(1500), 718, 25, OLD_LINE)]
     s += [path(f'M-1016 {Y(z)} H-342', OLD_LINE, 6, extra=' stroke-dasharray="20 14"') for z in (480, 950)]
     s += [rect(-700, Y(1660), 360, 160, WALL, LINE, 2), path(f'M-690 {Y(1680)} A170 140 0 0 1 -350 {Y(1680)} Z', LINE, 2.5, COPPER),
           path(f'M-520 {Y(1820)} V{Y(1890)}', LINE, 4)]
-    s += [rect(-60, Y(1500), 40, 1750, INK), gap(-60, Y(390), 40, 300), gap(-60, Y(800), 40, 240), gap(-60, Y(1270), 40, 240)]
-    for z in (-250, 90, 560, 1030, 1500):
+    s += [rect(-60, Y(1500), 40, 1750, INK), gap(-60, Y(420), 40, 420), gap(-60, Y(800), 40, 240), gap(-60, Y(1270), 40, 240)]
+    for z in (-340, 0, 560, 1030, 1500):
         s.append(rect(-20, Y(z), 720, 30, INK))
     s += [rect(LX0, Y(0), 280, 25, INK), rect(LX0, Y(560), 280, 30, INK), rect(LX0, Y(1030), 280, 30, INK), rect(LX0, Y(1500), 280, 30, INK)]
-    s += [path(' '.join(f'M{-190 + i * 26} {Y(i * 18)} h26 v-18' for i in range(5)), INK, 4)]
     s += [rect(-1038, Y(1500), 1738, 26, INK)] + balustrade(-1038, 700, 1500, 100, 24, piers=(-1016, -679, -320, -40, 300, 678))
     L = lambda x, z, t, px=8, c=INK, w=600, bg='#FFFFFF': label(x, Y(z), t, px, ks, c, w, 'middle', bg)
     s += [L(-679, 700, 'NHÀ CŨ', 9, INK, 600, OLD), L(-679, 640, 'sàn cũ: đo tại chỗ', 7, MUTED, 400, OLD),
-          L(-180, 760, 'NỐI', 8), L(330, 760, 'NHÀ MỚI', 9), L(330, 300, 'thư viện +0.90', 7, MUTED, 400),
-          L(330, -110, 'phòng tập −2.50', 7, MUTED, 400), L(-180, 150, '5 bậc', 7, INK, 600),
+          L(-180, 760, 'NỐI', 8), L(330, 760, 'NHÀ MỚI', 9), L(330, 300, 'thư viện ±0.00', 7, MUTED, 400),
+          L(330, -190, 'phòng tập −3.40', 7, MUTED, 400), L(-180, 150, 'cùng cốt', 7, ACC, 600),
           L(-120, 1700, '+15.00 chung', 7, ACC, 600, '#F3F4F1')]
-    sect = svg(sv, 360, 450, 'Mặt cắt ngang qua khối nối: nhà cũ bên trái cốt ±0.00 với cao độ các sàn trên cần đo; khối nối '
-               'ở giữa với năm bậc lên cốt +0.90; nhà mới bên phải có tầng dưới −2.50; một entablature và một lan can chạy '
+    sect = svg(sv, 338, 450, 'Mặt cắt ngang qua khối nối: nhà cũ bên trái cốt ±0.00 với cao độ các sàn trên cần đo; khối nối '
+               'ở giữa cùng cốt ±0.00 với hai nhà; nhà mới bên phải có tầng dưới −3.40; một entablature và một lan can chạy '
                'liền trên cả ba phần ở cốt +15.00', '\n'.join(s))
     rows = [
         ('Nối liền ở đâu', 'khối 2,8 × 9,5 m',
          'Lấp khe giữa tường đông nhà cũ và tường bắc nhà mới, suốt ba tầng, cùng mái. Hai nhà thành một khối, không còn khe hở.'),
         ('Một enfilade', 'dài 29 m',
          'Phòng ăn, Grand Salon, thư viện, khối nối, sảnh thang nhà cũ trên một đường cửa. Theo RB2, tường nhà cũ đã có lỗ cửa ở đây; cần kiểm tại chỗ.'),
-        ('Giải chênh cốt', '0,9 m ở tầng 1',
-         'Khối nối giữ cốt ±0.00 của nhà cũ, năm bậc đá lên thư viện và một thang nâng. Tầng 2, 3 vài bậc trong hành lang nối, chốt sau khi đo.'),
+        ('Cùng cốt nền', '±0.00 ở tầng 1',
+         'Sàn tầng 1 nhà mới hạ xuống ±0.00, bằng nhà cũ: enfilade đi phẳng, không bậc, không thang nâng. Tầng 2, 3 chốt sau khi đo sàn nhà cũ.'),
         ('Hai cửa mới', 'vườn biển, sân nhà cũ',
          'Đầu phía biển mở ra vườn; đầu phía đường là cửa gia đình hằng ngày từ sân nhà cũ và nhà xe, không qua tiền sảnh danh dự.'),
         ('Một mặt tiền', 'cùng nền, phào, mái',
@@ -1274,8 +1270,8 @@ def dt8():
 BOARDS = [
     ('DT0', 'dt0-y-tuong', 'DT0YTuong.dc.html', 'Dinh thự Tam Quan – ý tưởng, phong cách, năm nguyên tắc', dt0),
     ('DT1', 'dt1-tong-mat-bang', 'DT1TongMatBang.dc.html', 'Tổng mặt bằng – hai nhà cổng, sân danh dự, vườn biển', dt1),
-    ('DT2', 'dt2-tang-duoi', 'DT2TangDuoi.dc.html', 'Tầng dưới – ninfeo có hồ bơi trong hang vòm (cốt −2.50)', dt2),
-    ('DT3', 'dt3-tang-1', 'DT3Tang1.dc.html', 'Tầng 1 – trục danh dự, enfilade, thang hoàng gia (cốt +0.90)', dt3),
+    ('DT2', 'dt2-tang-duoi', 'DT2TangDuoi.dc.html', 'Tầng dưới – ninfeo có hồ bơi trong hang vòm (cốt −3.40)', dt2),
+    ('DT3', 'dt3-tang-1', 'DT3Tang1.dc.html', 'Tầng 1 – trục danh dự, enfilade, thang hoàng gia (cốt ±0.00)', dt3),
     ('DT4', 'dt4-tang-2-3', 'DT4Tang23.dc.html', 'Tầng 2 và tầng 3 – gia đình và căn hộ chủ (cốt +5.60, +10.30)', dt4),
     ('DT5', 'dt5-mat-dung-chinh', 'DT5MatDungChinh.dc.html', 'Mặt đứng chính – nền đá, thức Corinth khổng lồ, trán tường', dt5),
     ('DT6', 'dt6-mat-dung-bien', 'DT6MatDungBien.dc.html', 'Mặt đứng phía biển – hang vòm, thang móng ngựa, sân thượng', dt6),
