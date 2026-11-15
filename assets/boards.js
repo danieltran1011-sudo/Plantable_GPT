@@ -70,62 +70,48 @@ window.BOARD_SETS = [
     ]
   },
   {
-    "id": "y-tuong-moi",
-    "set": "Ý tưởng mới",
+    "id": "y-tuong-tu-dau",
+    "set": "Ý tưởng từ đầu",
     "boards": [
       {
-        "code": "YT0",
-        "slug": "yt0-tong-hop",
-        "title": "Tổng hợp – bảy ý tưởng và thứ tự phải chốt",
+        "code": "K0",
+        "slug": "k0-khu-dat-de-bai",
+        "title": "Làm lại từ khu đất – đọc khu đất, đề bài, bốn hướng mới",
         "w": 1480,
         "h": 1060
       },
       {
-        "code": "YT1",
-        "slug": "yt1-gio-bien",
-        "title": "Gió biển xuyên trục chính – ô thoáng, sảnh tròn làm ống khói",
+        "code": "K1",
+        "slug": "k1-tuong-phia-tay",
+        "title": "Tường phía tây – dải kín dọc mặt đường, phòng lớn mở ra biển",
         "w": 1480,
         "h": 1060
       },
       {
-        "code": "YT2",
-        "slug": "yt2-am-hoc-rotonda",
-        "title": "Âm học cho La Rotonda – trần vòm hút âm, thảm, rèm",
+        "code": "K2",
+        "slug": "k2-mot-mai-bon-hien",
+        "title": "Một mái, bốn hiên – khối vuông, hiên sâu, sảnh giữa có lồng đèn",
         "w": 1480,
         "h": 1060
       },
       {
-        "code": "YT3",
-        "slug": "yt3-ban-cong-porte-cochere",
-        "title": "Ban công hoàng hôn trên mái porte-cochère (cốt +5.60)",
+        "code": "K3",
+        "slug": "k3-bac-thang-ra-bien",
+        "title": "Bậc thang ra biển – mỗi tầng lùi 5 m thành một sân thượng",
         "w": 1480,
         "h": 1060
       },
       {
-        "code": "YT4",
-        "slug": "yt4-loi-khong-bac",
-        "title": "Một lối không bậc cho ông bà – dốc, thang máy, thang nâng sang nhà cũ",
+        "code": "K4",
+        "slug": "k4-cong-nhin-ra-bien",
+        "title": "Cổng nhìn ra biển – hai khối, một cổng trên trục, cầu hai tầng",
         "w": 1480,
         "h": 1060
       },
       {
-        "code": "YT5",
-        "slug": "yt5-nuoc-mua",
-        "title": "Bể nước mưa 30 m³ dưới sân danh dự",
-        "w": 1480,
-        "h": 1060
-      },
-      {
-        "code": "YT6",
-        "slug": "yt6-dien-mat-troi",
-        "title": "Điện mặt trời giấu sau lan can mái cánh phải",
-        "w": 1480,
-        "h": 1060
-      },
-      {
-        "code": "YT7",
-        "slug": "yt7-tang-duoi-kho",
-        "title": "Giữ tầng dưới khô khi bão – khảo sát, ngưỡng, bơm, van",
+        "code": "K5",
+        "slug": "k5-so-sanh",
+        "title": "So sánh bốn hướng và đề xuất",
         "w": 1480,
         "h": 1060
       }
