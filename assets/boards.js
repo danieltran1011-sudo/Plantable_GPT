@@ -137,5 +137,32 @@ window.BOARD_SETS = [
         "h": 1060
       }
     ]
+  },
+  {
+    "id": "mo-rong-tam",
+    "set": "Mở rộng tạm",
+    "boards": [
+      {
+        "code": "U0",
+        "slug": "u0-mo-rong-chu-u",
+        "title": "Mở rộng tạm chữ U – mặt bằng, mở ra sân nhà cũ",
+        "w": 1480,
+        "h": 1060
+      },
+      {
+        "code": "U1",
+        "slug": "u1-hien-mat-cat",
+        "title": "Hiên dãy nam, mặt cắt qua sân, cách làm cấp 4",
+        "w": 1480,
+        "h": 1060
+      },
+      {
+        "code": "U2",
+        "slug": "u2-lo-trinh-5-nam",
+        "title": "Lộ trình 5 năm – tháo gì, giữ gì khi xây dinh thự",
+        "w": 1480,
+        "h": 1060
+      }
+    ]
   }
 ];

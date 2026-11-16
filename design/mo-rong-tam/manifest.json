@@ -1,0 +1,35 @@
+{
+  "order": 3,
+  "project": "Biệt thự Tam Quan",
+  "set": "Mở rộng tạm",
+  "eyebrow": "Giai đoạn 1 · công trình tạm khoảng 5 năm",
+  "heading": "Mở rộng tạm hình chữ U",
+  "summary": "Nhà một tầng cấp 4 ôm ba cạnh lô mới, mở ra sân nhà cũ thành một sân chung. Cùng cốt +0.90 với nhà cũ, khung thép dễ tháo; dãy phía đường có thể giữ lại làm nhà xe và nhà cổng của dinh thự.",
+  "generator": "design/mo-rong-tam/generate.py",
+  "boards": [
+    {
+      "code": "U0",
+      "slug": "u0-mo-rong-chu-u",
+      "file": "U0MatBang.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Mở rộng tạm chữ U – mặt bằng, mở ra sân nhà cũ"
+    },
+    {
+      "code": "U1",
+      "slug": "u1-hien-mat-cat",
+      "file": "U1HienMatCat.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Hiên dãy nam, mặt cắt qua sân, cách làm cấp 4"
+    },
+    {
+      "code": "U2",
+      "slug": "u2-lo-trinh-5-nam",
+      "file": "U2LoTrinh.dc.html",
+      "w": 1480,
+      "h": 1060,
+      "title": "Lộ trình 5 năm – tháo gì, giữ gì khi xây dinh thự"
+    }
+  ]
+}
