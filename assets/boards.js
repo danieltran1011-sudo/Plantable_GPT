@@ -145,14 +145,14 @@ window.BOARD_SETS = [
       {
         "code": "U0",
         "slug": "u0-mo-rong-chu-u",
-        "title": "Mở rộng tạm chữ U – mặt bằng, mở ra sân nhà cũ",
+        "title": "Mở rộng tạm chữ U theo phác thảo – mặt bằng",
         "w": 1480,
         "h": 1060
       },
       {
         "code": "U1",
         "slug": "u1-hien-mat-cat",
-        "title": "Hiên dãy nam, mặt cắt qua sân, cách làm cấp 4",
+        "title": "Hiên cánh nam, mặt cắt qua sân, cách làm cấp 4",
         "w": 1480,
         "h": 1060
       },
